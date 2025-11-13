@@ -47,3 +47,18 @@ docker compose down
 
 Додаток використовує змінну середовища `MONGODB_URI`, що визначена у `docker-compose.yml`. За потреби її можна змінити у файлі Compose або передати через `.env` файл.
 
+## Усунення несправностей
+
+Якщо команда `docker` або `docker compose` не знайдена, переконайтеся, що Docker встановлено та додано до `PATH`.
+
+1. Перевірте наявність Docker CLI:
+   ```bash
+   docker --version
+   docker compose version
+   ```
+   Якщо команди повертають помилку `command not found`, встановіть [Docker Desktop](https://www.docker.com/products/docker-desktop/) (для Windows/macOS) або [Docker Engine](https://docs.docker.com/engine/install/) разом із Docker Compose Plugin (для Linux).
+2. Після встановлення перезапустіть термінал або систему, щоб змінні середовища оновилися.
+3. На Linux переконайтеся, що ваш користувач доданий до групи `docker`, або запускайте команди з `sudo`.
+
+Тільки після успішного виконання команд вище запускайте `docker compose up --build`.
+
