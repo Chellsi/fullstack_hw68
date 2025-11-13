@@ -8,8 +8,8 @@ services:
       - "3000:3000"
     environment:
       NODE_ENV: development
-      MONGODB_URI: mongodb://mongo:27017/fullstack_hw68
-      MONGODB_DB_NAME: fullstack_hw68
+      MONGODB_URI: mongodb+srv://alexsarnavskiy_db_user:mFMFPU2DXfgGig0S@cluster0.glulr8q.mongodb.net/?appName=Cluster0
+      MONGODB_DB_NAME: alexsarnavskiy_db_user
     volumes:
       - ./:/app
       - /app/node_modules
@@ -20,7 +20,7 @@ services:
     image: mongo:7
     restart: unless-stopped
     environment:
-      MONGO_INITDB_DATABASE: fullstack_hw68
+      MONGO_INITDB_DATABASE: alexsarnavskiy_db_user
     volumes:
       - mongo-data:/data/db
     ports:
