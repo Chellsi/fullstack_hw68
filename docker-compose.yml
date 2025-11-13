@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    command: npm run dev
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      MONGODB_URI: mongodb://mongo:27017/fullstack_hw68
+      MONGODB_DB_NAME: fullstack_hw68
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: fullstack_hw68
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongo-data:
