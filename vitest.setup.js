@@ -1,4 +1,5 @@
-import '@testing-library/jest-dom'
+// Налаштування тестового середовища Vitest
+// Додаткові DOM-матчери можна підключити за потреби.
 
 // Глобальні мок-функції для fetch
 beforeEach(() => {
@@ -9,4 +10,4 @@ beforeEach(() => {
 
 afterEach(() => {
   vi.clearAllMocks()
-}) 
+})
