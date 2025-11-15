@@ -1,0 +1,37 @@
+services:
+  app:
+    build: .
+    entrypoint: ["./docker-entrypoint.sh"]
+    command: ["npm", "run", "dev"]
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      MONGODB_URI: mongodb://mongo:27017/fullstack_hw68
+      MONGODB_DB_NAME: fullstack_hw68
+    volumes:
+      - ./:/app
+      - app-node-modules:/app/node_modules
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: fullstack_hw68
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  app-node-modules:
+  mongo-data:
