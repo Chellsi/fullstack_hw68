@@ -9,6 +9,7 @@ COPY vendor ./vendor
 RUN npm install --production=false
 
 COPY . .
+RUN chmod +x docker-entrypoint.sh
 
 EXPOSE 3000
 
